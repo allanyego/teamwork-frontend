@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 const App: React.FC = () => {
+  const [todos, setTodos] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-uk-grid>
+      <div className="uk-width-1-3@m">
+        <div className="uk-card uk-card-default uk-card-body">
+          <input type="todo" className="uk-input" />
+          <div>
+            <ul>
+              { [1, 2, 3].map(t => <li key={t}>Flacko</li> )}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
