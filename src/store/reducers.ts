@@ -1,48 +1,79 @@
-import { combineReducers } from 'redux'
-import {
-  ADD_TODO,
-  TOGGLE_TODO,
-  SET_VISIBILITY_FILTER,
-  VisibilityFilters
-} from './actions'
-const { SHOW_ALL } = VisibilityFilters
+import { combineReducers } from 'redux';
+import { UserState, ArticleState, GifState } from './model-types';
+import { UserActionTypes, LOGIN, LOGOUT, ArticleActionTypes, ADD_ARTICLE, UPDATE_ARTICLES, GifActionTypes, ADD_GIF, UPDATE_GIFS } from './action-types';
 
-function visibilityFilter(state = SHOW_ALL, action: any) {
-  switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter
+const initialUserState: UserState = {
+  user: null,
+};
+
+export function userReducer(
+  state = initialUserState,
+  action: UserActionTypes,
+): UserState {
+  switch(action.type) {
+    case LOGIN:
+      return { user: action.payload };
+    case LOGOUT:
+      return { user: null, };
     default:
-      return state
+      return state;
   }
 }
 
-function todos(state = [], action: any) {
+const initialArticlesState: ArticleState = {
+  articles: [], 
+}
+
+export function articlesReducer(
+  state = initialArticlesState,
+  action: ArticleActionTypes,
+): ArticleState {
   switch (action.type) {
-    case ADD_TODO:
-      return [
-        ...state,
-        {
-          text: action.text,
-          completed: false
-        }
-      ]
-    case TOGGLE_TODO:
-      return state.map((todo, index) => {
-        if (todo && index === action.index) {
-          return Object.assign({}, todo, {
-            completed: !todo.completed
-          })
-        }
-        return todo
-      })
+    case ADD_ARTICLE:
+      return {
+        articles: [
+          ...state.articles,
+          action.payload,
+        ]
+      }
+    case UPDATE_ARTICLES:
+      return {
+        articles: [...action.payload],
+      }
     default:
-      return state
+      return state;
   }
 }
 
-const todoApp = combineReducers({
-  visibilityFilter,
-  todos
-})
+const initialGifsState: GifState = {
+  gifs: [],
+};
 
-export default todoApp
+export function gifsReducer(
+  state = initialGifsState,
+  action: GifActionTypes,
+): GifState {
+  switch (action.type) {
+    case ADD_GIF:
+      return {
+        gifs: [
+          ...state.gifs,
+          action.payload,
+        ]
+      }
+    case UPDATE_GIFS:
+      return {
+        gifs: [...action.payload],
+      }
+    default:
+      return state;
+  }
+}
+
+const teamworkApp = combineReducers({
+  articles: articlesReducer,
+  gifs: gifsReducer,
+  user: userReducer,
+});
+
+export default teamworkApp;

@@ -11,14 +11,14 @@ export interface User extends Entity {
   token: string;
   firstName: string;
   lastName: string;
+  username: string;
   email: string;
   gender: string;
-  mobile: string;
-  address: string;
+  mobile?: string;
+  address?: string;
   department: string;
   role: string;
   type: string;
-  password: string;
 }
 
 export interface Article extends Entity {
@@ -50,7 +50,7 @@ export interface Flag extends Entity {
 }
 
 export interface UserState {
-  user: User;
+  user: User | null;
 }
 
 export interface ArticleState {

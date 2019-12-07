@@ -1,0 +1,12 @@
+body {
+  padding: 0 .5em;
+  height: 100vh;
+}
+
+nav {
+  height: 12vh;
+}
+
+main {
+  height: 88vh;
+}

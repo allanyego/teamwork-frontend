@@ -6,6 +6,9 @@ import { User, Article, Gif, Flag } from "./model-types";
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
+/*
+ * And some action types
+ */
 interface LoginAction {
   type: typeof LOGIN;
   payload: User;
@@ -17,11 +20,11 @@ interface LogoutAction {
 
 export type UserActionTypes = LoginAction | LogoutAction;
 
-export const ADD_ARTICLES = 'ADD_ARTICLES'
+export const ADD_ARTICLE = 'ADD_ARTICLE'
 export const UPDATE_ARTICLES = 'UPDATE_ARTICLES';
 
 interface AddArticleAction {
-  type: typeof ADD_ARTICLES;
+  type: typeof ADD_ARTICLE;
   payload: Article;
 }
 

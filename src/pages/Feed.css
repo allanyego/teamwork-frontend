@@ -1,0 +1,16 @@
+.t-tabs > a{
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+  color: #999;
+  border-bottom: 1px solid transparent;
+  font-size: .875rem;
+  text-transform: uppercase;
+  transition: color .1s ease-in-out;
+  text-decoration: none;
+}
+
+.t-tabs > a.t-active {
+  color: #333;
+  border-color: #1e87f0;
+}

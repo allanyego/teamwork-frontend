@@ -1,0 +1,15 @@
+.article-view {
+  padding: 1em;
+}
+
+#flag-btn {
+  width: 3.5em;
+  height: 3.5em;
+  padding: .5em;
+  border-radius: 50%;
+}
+
+#flag-btn img {
+  width: 2em;
+  height: auto;
+}
