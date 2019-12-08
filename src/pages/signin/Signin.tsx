@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import { ConnectedProps } from 'react-redux';
 import { signinConnect } from '../containers/Signin';
-import { signin } from '../../controllers/http';
+import { signin } from '../../controllers';
 import { RouteComponentProps } from 'react-router';
 
 type Props = ConnectedProps<typeof signinConnect> &

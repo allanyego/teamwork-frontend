@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article, Gif } from '../store/model-types';
+import { Article, Gif, User } from '../store/model-types';
 import { Link } from 'react-router-dom';
 
 type Post = {
@@ -7,9 +7,10 @@ type Post = {
 };
 type Props = Post & {
   widthClass?: string;
+  user: User;
 }
 
-const Item: React.FC<Props> = ({ post, widthClass }) => {
+const Item: React.FC<Props> = ({ post, widthClass, user }) => {
   return (
     <div className={`${widthClass || "uk-width-1-4@m"}`}>
       <div className="uk-card uk-card-default">
@@ -33,6 +34,22 @@ const Item: React.FC<Props> = ({ post, widthClass }) => {
         }
         {}
         <div className="uk-card-footer">
+          <div className="uk-flex uk-flex-evenly">
+            <div>
+              <span data-uk-icon="icon: tag"></span>&nbsp;
+              {post.category.name}
+            </div>
+            <div>
+              <span data-uk-icon="icon: comments"></span>&nbsp;
+              (0)
+            </div>
+            {
+              // (user.id === post.user.id) &&
+                <div className="uk-text-danger">
+                  <span data-uk-icon="icon: trash"></span>&nbsp;
+                </div>
+            }
+          </div>
           {
             post.image ?
               <Link to={"/feed/gifs/" + post.id}>More</Link> :

@@ -5,9 +5,12 @@ import { gifsConnect } from '../containers/Gifs';
 
 type Props = ConnectedProps<typeof gifsConnect>
 
-const Gifs: React.FC<Props> = ({ gifs, updateGifs }) => {
+const Gifs: React.FC<Props> = ({ gifs, updateGifs, user }) => {
   return(
-    <GifList gifs={gifs} updateGifs={updateGifs}  />
+    <GifList
+      gifs={gifs}
+      updateGifs={updateGifs}
+      user={user} />
   );
 };
 

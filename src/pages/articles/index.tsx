@@ -5,9 +5,12 @@ import { articlesConnect } from '../containers/Articles';
 
 type Props = ConnectedProps<typeof articlesConnect>;
 
-const Articles: React.FC<Props> = ({ articles, updateArticles }) => {
+const Articles: React.FC<Props> = ({ articles, updateArticles, user }) => {
   return(
-    <ArticleList articles={articles} updateArticles={updateArticles} />
+    <ArticleList
+      articles={articles}
+      updateArticles={updateArticles}
+      user={user} />
   );
 };
 

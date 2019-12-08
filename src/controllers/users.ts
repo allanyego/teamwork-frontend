@@ -63,3 +63,35 @@ export async function signup(details: NewUserDetails): Promise<User> {
     throw e;
   }
 }
+
+export interface EditUserDetails {
+  username?: string,
+  firstName?: string,
+  lastName?: string,
+  email?: string,
+  department?: string,
+  role?: string,
+  type?: string;
+}
+
+export async function updateUser(details: EditUserDetails): Promise<User> {
+  try {
+    const res = await fetch(`${SERVER_URL}/auth`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...details as any,
+      }),
+    });
+
+    const jsonRes = await res.json();
+    if (res.status !== 200) {
+      throw new Error(jsonRes.error);
+    }
+    return jsonRes.data;
+  } catch (e) {
+    throw e;
+  }
+}

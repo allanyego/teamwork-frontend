@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import Signin from './pages/containers/Signin';
 import Signup from './pages/containers/Signup';
 import Feed from './pages/Feed';
+import Profile from './pages/containers/Profile';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/signin" component={Signin} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/feed" component={Feed} />
+          <Route path="/profile" component={Profile} />
           <Route path="/" render={() => <Redirect to="/home" />} />
         </Switch>
       </main>
